@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Re:Earth Project — Green Starts with Us</title>
+<meta name="description" content="Re:Earth Project - Re:Action 챌린지 (생활 속 탄소 되돌리기). 청소년 주도 비영리 재단 홍보 페이지" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Marcellus&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg1: #f6fffd;
+    --bg2: #f0fbff;
+    --accent1: #2fbf91;
+    --accent2: #21a0d6;
+    --muted: #64707a;
+    --card: #ffffff;
+    --glass: rgba(255,255,255,0.6);
+    --radius: 14px;
+    --max-width: 1100px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,var(--bg1),var(--bg2));
+    color:#09323a;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+
+  /* Layout */
+  .wrap{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  header{
+    position:sticky;
+    top:0;
+    width:100%;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.55));
+    box-shadow: 0 6px 18px rgba(2,18,19,0.05);
+    z-index:100;
+  }
+  .nav{
+    max-width:var(--max-width);
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:14px 20px;
+  }
+  .brand{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .logo{
+    width:46px;
+    height:46px;
+    display:inline-block;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--accent1),var(--accent2));
+    box-shadow: 0 6px 18px rgba(33,160,214,0.12), inset 0 -6px 12px rgba(0,0,0,0.06);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .logo svg{filter:drop-shadow(0 3px 6px rgba(0,0,0,0.08))}
+  .brand h1{font-family:Marcellus, serif; font-size:18px; margin:0; color:#053038;}
+  .brand p{margin:0;font-size:11px;color:var(--muted)}
+
+  nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+  nav a{
+    color: #053038;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:14px;
+  }
+  nav a:hover{background:rgba(43,165,132,0.08)}
+  .cta{
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    color:white;
+    padding:8px 14px;
+    border-radius:10px;
+    font-weight:700;
+  }
+
+  /* Hero */
+  .hero{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:48px 20px 28px;
+  }
+  .container{
+    max-width:var(--max-width);
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:28px;
+    align-items:start;
+  }
+  .intro-card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+    border-radius: var(--radius);
+    padding:28px;
+    box-shadow: 0 10px 30px rgba(2,18,19,0.06);
+  }
+  .intro-card h2{
+    margin:0 0 8px 0;
+    font-size:28px;
+    color:#03363a;
+  }
+  .slogan{
+    color:var(--muted);
+    margin:0 0 18px 0;
+    font-weight:500;
+  }
+  .tag{
+    display:inline-block;
+    background:rgba(33,160,214,0.08);
+    color:var(--accent2);
+    padding:6px 10px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:13px;
+  }
+  .lead{
+    color:#244b47;
+    margin:18px 0 22px;
+  }
+  .metrics{
+    display:flex;
+    gap:12px;
+  }
+  .metric{
+    flex:1;
+    background:var(--card);
+    border-radius:12px;
+    padding:12px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(4,32,32,0.04);
+  }
+  .metric strong{display:block;font-size:20px;color:#0b5546}
+  .metric span{font-size:12px;color:var(--muted)}
+
+  /* Sidebar card */
+  .side-card{
+    background:linear-gradient(180deg,#fff,#fbfffd);
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 8px 24px rgba(2,18,19,0.04);
+  }
+  .side-card h3{margin:0 0 12px 0;color:#053038}
+  .btn{
+    display:inline-block;
+    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
+  }
+
+  /* Sections */
+  section{
+    width:100%;
+    padding:48px 20px;
+  }
+  .content{
+    max-width:var(--max-width);
+    margin:0 auto;
+    display:block;
+    gap:18px;
+  }
+  .section-title{
+    display:flex;
+    gap:12px;
+    align-items:baseline;
+    margin-bottom:18px;
+  }
+  .section-title h3{margin:0;font-size:20px;color:#053038}
+  .section-title p{margin:0;color:var(--muted);font-size:13px}
+
+  /* Activity card */
+  .activity{
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:22px;
+    align-items:start;
+  }
+  .card{
+    background:var(--card);
+    border-radius:12px;
+    padding:18px;
+    box-shadow: 0 8px 24px rgba(2,18,19,0.04);
+  }
+  .card h4{margin:0 0 12px 0;color:#034643}
+  .steps{display:flex;flex-direction:column;gap:10px}
+  .step{display:flex;gap:12px;align-items:flex-start}
+  .step .num{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:white;display:flex;align-items:center;justify-content:center;font-weight:700}
+  .step p{margin:0;color:#334d4a}
+
+  .map{
+    height:220px;
+    border-radius:12px;
+    background: linear-gradient(180deg,#edf9f6,#f7fffd);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-weight:700;
+    font-size:14px;
+    border:1px dashed rgba(3,83,69,0.06);
+  }
+
+  /* Campaign participation */
+  .participation{
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:20px;
+    align-items:start;
+  }
+  .form-row{display:flex;gap:10px;margin-bottom:10px}
+  input[type="text"], input[type="email"], select{
+    width:100%;
+    padding:10px 12px;
+    border-radius:10px;
+    border:1px solid #e6eef0;
+    background:#fbffff;
+    font-size:14px;
+  }
+  .small{font-size:13px;color:var(--muted);margin-bottom:8px}
+
+  /* News cards */
+  .news-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap:16px;
+  }
+  .news{
+    border-radius:12px;padding:14px;background:linear-gradient(180deg,#fff,#fbfffd);
+    box-shadow:0 8px 20px rgba(2,18,19,0.04);
+  }
+  .news h5{margin:0 0 8px 0}
+  .news p{margin:0;color:var(--muted);font-size:14px}
+
+  /* Footer / donate/contact */
+  .donate-row{display:flex;gap:18px;align-items:center}
+  .donate-box{flex:1;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#f7fffd);box-shadow:0 8px 20px rgba(2,18,19,0.04)}
+  .contact-box{flex:1;padding:18px;border-radius:12px;background:#fff}
+
+  footer{padding:28px 20px;background:transparent;color:var(--muted)}
+  .copyright{max-width:var(--max-width);margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .container{grid-template-columns:1fr}
+    .activity, .participation{grid-template-columns:1fr}
+    nav{display:none}
+  }
+  @media (max-width:520px){
+    .intro-card h2{font-size:22px}
+    .brand h1{font-size:16px}
+    .container{padding:0}
+  }
+
+  /* subtle animations */
+  .fade-in{opacity:0;transform:translateY(8px);transition:all .6s cubic-bezier(.2,.9,.3,1)}
+  .fade-in.show{opacity:1;transform:none}
+  .pill{display:inline-block;padding:6px 10px;background:#effffb;border-radius:999px;color:#0b5b46;font-weight:700;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="nav">
+      <div class="brand" role="banner">
+        <div class="logo" aria-hidden="true">
+          <!-- simple leaf+re symbol -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 12c3.5-7 10-9 14-9-1 4-3 7-6 10-3 3-5 4-8 5z" fill="rgba(255,255,255,0.14)"/>
+            <path d="M17 7c1.8 3-1 6-4 9-1.6 1.8-3.2 3-5 3 3-3 4-6 5-9 0 0 3-2 4-3z" fill="white" opacity="0.9"/>
+          </svg>
+        </div>
+        <div>
+          <h1>Re:Earth Project</h1>
+          <p>Green Starts with Us</p>
+        </div>
+      </div>
+
+      <nav role="navigation" aria-label="Main">
+        <a href="#about">소개</a>
+        <a href="#activity">핵심활동</a>
+        <a href="#participate">참여하기</a>
+        <a href="#news">뉴스·스토리</a>
+        <a class="cta" href="#donate">후원·문의</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="container">
+      <div class="intro-card fade-in show">
+        <span class="tag">Re:Action — 생활 속 탄소 되돌리기 챌린지</span>
+        <h2>Re:Earth Project</h2>
+        <p class="slogan">Green Starts with Us</p>
+        <p class="lead">우리는 고등학생이 주도하는 비영리 재단으로, 일상 속 작은 실천을 통해 탄소 배출을 줄이고 지구의 회복을 촉진합니다. 캠페인, 교육, 지역 연계 프로젝트로 변화를 만듭니다.</p>
+
+        <div class="metrics" aria-hidden="true">
+          <div class="metric">
+            <strong id="countParticipants">1,246</strong>
+            <span>참여자</span>
+          </div>
+          <div class="metric">
+            <strong id="countTrees">3,824</strong>
+            <span>가상 탄소 저감 포인트</span>
+          </div>
+          <div class="metric">
+            <strong id="countSchools">42</strong>
+            <span>참여 학교·동아리</span>
+          </div>
+        </div>
+
+        <p style="margin-top:18px;color:var(--muted)">지금 바로 참여해서 개인의 작은 변화가 지구에 어떤 영향을 주는지 확인해보세요.</p>
+        <div style="margin-top:16px">
+          <a class="btn" href="#participate">지금 참여하기</a>
+        </div>
+      </div>
+
+      <aside class="side-card fade-in show" aria-hidden="false">
+        <h3>Re:Action Challenge</h3>
+        <p class="small">챌린지 개요: 텀블러 사용, 대중교통 이용, 채식데이 등 일상 실천을 기록하면 포인트를 드려요.</p>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <a class="btn" href="#participate">참가 인증</a>
+          <a style="display:inline-block;padding:10px 12px;border-radius:10px;background:#f0faf7;color:#0b6a53;text-decoration:none;font-weight:700" href="#news">스토리 보기</a>
+        </div>
+        <div style="margin-top:14px;font-size:13px;color:var(--muted)">
+          <div style="display:flex;gap:8px;align-items:center;margin-top:10px">
+            <span class="pill">#청소년주도</span>
+            <span class="pill">#탄소감소</span>
+            <span class="pill">#지역연계</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CORE ACTIVITY -->
+  <section id="activity" aria-labelledby="activityTitle">
+    <div class="content">
+      <div class="section-title">
+        <h3 id="activityTitle">핵심활동 — Re:Action</h3>
+        <p>생활 속 탄소 되돌리기 챌린지 (Re:Action Challenge)</p>
+      </div>
+
+      <div class="activity">
+        <div class="card fade-in">
+          <h4>무엇을 하나요?</h4>
+          <p class="small">Re:Action은 참가자가 일상에서 실천 가능한 항목을 골라 기록하고, 가시적인 '탄소 저감 포인트'로 환산해 서로 공유하는 챌린지입니다.</p>
+
+          <div class="steps" aria-hidden="false" style="margin-top:12px">
+            <div class="step"><div class="num">1</div><p>실천 선택: 텀블러, 대중교통, 채식데이, 에너지 절약 등</p></div>
+            <div class="step"><div class="num">2</div><p>기록 & 인증: 사진/체크인으로 활동 인증</p></div>
+            <div class="step"><div class="num">3</div><p>포인트 환산: 활동별 표준 포인트로 합산</p></div>
+            <div class="step"><div class="num">4</div><p>공유 & 리워드: 학교별 랭킹과 리워드(굿즈, 지역 혜택)</p></div>
+          </div>
+
+          <div style="margin-top:14px">
+            <a class="btn" href="#participate">챌린지 참여하기</a>
+          </div>
+        </div>
+
+        <div class="card fade-in">
+          <h4>데모: 포인트 환산</h4>
+          <p class="small">간단한 포인트 계산기 예시 — 활동 하나당 부여되는 포인트(샘플)</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+            <div style="display:flex;justify-content:space-between"><span>텀블러 사용 (1일)</span><strong>+5 pts</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>대중교통 (왕복)</span><strong>+8 pts</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>채식데이 (1일)</span><strong>+12 pts</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>지역 봉사(1시간)</span><strong>+20 pts</strong></div>
+          </div>
+
+          <div class="map" style="margin-top:14px">
+            지역 연계 & 파트너카페 할인 표시(데모)
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTICIPATE -->
+  <section id="participate" aria-labelledby="participateTitle">
+    <div class="content">
+      <div class="section-title">
+        <h3 id="participateTitle">캠페인 참여</h3>
+        <p>지금 바로 실천을 기록하고 포인트를 모아보세요</p>
+      </div>
+
+      <div class="participation">
+        <div class="card">
+          <h4>참여 신청서</h4>
+          <p class="small">아래 폼을 작성하면 참여 계정(임시)이 생성됩니다. 사진 인증은 SNS 업로드 후 링크를 붙여주세요.</p>
+
+          <form id="joinForm" onsubmit="return false;">
+            <label class="small" for="school">학교 / 단체</label>
+            <input id="school" type="text" placeholder="예: 서울고등학교 환경동아리" required>
+
+            <div class="form-row">
+              <div style="flex:1">
+                <label class="small" for="name">이름</label>
+                <input id="name" type="text" placeholder="홍길동" required>
+              </div>
+              <div style="flex:1">
+                <label class="small" for="email">이메일</label>
+                <input id="email" type="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+
+            <label class="small" for="act">주로 실천할 항목</label>
+            <select id="act">
+              <option>텀블러 사용</option>
+              <option>대중교통 이용</option>
+              <option>채식데이</option>
+              <option>지역 청소/봉사</option>
+            </select>
+
+            <p class="small" style="margin-top:10px">간단 메시지(선택)</p>
+            <input id="msg" type="text" placeholder="참여 이유나 응원 한마디">
+
+            <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+              <button id="joinBtn" class="btn">참여 등록</button>
+              <div style="font-size:13px;color:var(--muted)">가입 후 포인트 적립은 앱(모바일)에서 가능합니다.</div>
+            </div>
+          </form>
+
+          <div style="margin-top:12px;color:var(--muted);font-size:13px">※ 제출 정보는 데모 목적이며 실제 저장소로 전송되지 않습니다.</div>
+        </div>
+
+        <div class="card">
+          <h4>즉석 포인트 계산기</h4>
+          <p class="small">활동을 선택하고 횟수를 입력하면 예상 포인트를 계산합니다.</p>
+
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <select id="calcAct">
+              <option value="5">텀블러 사용 (+5 pts)</option>
+              <option value="8">대중교통 (왕복) (+8 pts)</option>
+              <option value="12">채식데이 (+12 pts)</option>
+              <option value="20">지역봉사(1h) (+20 pts)</option>
+            </select>
+            <input id="calcCount" type="number" min="1" value="1" style="width:86px;padding:10px;border-radius:8px;border:1px solid #e6eef0">
+            <button id="calcBtn" class="btn">계산</button>
+          </div>
+
+          <div id="calcResult" style="margin-top:12px;font-size:18px;color:#0a5246;font-weight:700">예상 포인트: —</div>
+
+          <hr style="margin:16px 0;border:none;border-top:1px dashed #eef8f6">
+
+          <h4>최근 참여자 피드</h4>
+          <div id="feed" style="display:flex;flex-direction:column;gap:8px">
+            <div style="background:#fbfffc;padding:10px;border-radius:10px">윤아님 — 텀블러로 일주일 챌린지 완료! (+35 pts)</div>
+            <div style="background:#fbfffc;padding:10px;border-radius:10px">지훈님 — 채식데이 3회 참여! (+36 pts)</div>
+            <div style="background:#fbfffc;padding:10px;border-radius:10px">환경동아리 A — 학교 캠페인 시작 (+120 pts)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS / STORY -->
+  <section id="news" aria-labelledby="newsTitle">
+    <div class="content">
+      <div class="section-title">
+        <h3 id="newsTitle">뉴스 · 스토리</h3>
+        <p>Re:Earth 활동과 지역 스토리</p>
+      </div>
+
+      <div class="news-grid">
+        <article class="news fade-in">
+          <h5>[스토리] 서울고 환경동아리의 작은 변화</h5>
+          <p>서울고 환경동아리는 Re:Action 챌린지를 통해 텀블러 사용률을 70%로 끌어올렸습니다. 학생들이 직접 카페와 협약을 맺어 할인 혜택을 제공받았습니다.</p>
+        </article>
+
+        <article class="news fade-in">
+          <h5>[프로젝트] 지역 숲 복원 캠페인</h5>
+          <p>지역 자원봉사자들과 함께 한 ‘초록길 복원’ 프로젝트로 약 200그루의 묘목을 심었습니다. 참가자들이 경험을 나누며 탄소 저감 효과를 배웠습니다.</p>
+        </article>
+
+        <article class="news fade-in">
+          <h5>[팁] 플라스틱 줄이기 실천법</h5>
+          <p>쇼핑할 때 장바구니 사용, 대용량 리필 제품 이용, 일회용 컵 대신 개인컵 소지하기 등 간단한 실천 팁을 모았습니다.</p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DONATE / CONTACT -->
+  <section id="donate" aria-labelledby="donateTitle">
+    <div class="content">
+      <div class="section-title">
+        <h3 id="donateTitle">후원 · 문의</h3>
+        <p>함께할 수 있는 방법들</p>
+      </div>
+
+      <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+        <div class="donate-box">
+          <h4>후원으로 함께하기</h4>
+          <p class="small">Re:Earth Project는 비영리 청소년 단체입니다. 후원은 활동 확장(교육, 굿즈, 지역 프로젝트)에 직접 사용됩니다.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button class="btn" onclick="openDonate()">일시후원</button>
+            <button class="btn" style="background:linear-gradient(90deg,#fff,#fff);color:var(--accent2);border:1px solid #e6f6f3" onclick="openDonate()">정기후원</button>
+          </div>
+          <p style="margin-top:12px;color:var(--muted);font-size:13px">※ 시범 페이지: 실제 결제 연동은 되어 있지 않습니다.</p>
+        </div>
+
+        <div class="contact-box">
+          <h4>문의하기</h4>
+          <p class="small">프로젝트 참여, 학교 연계, 미디어 문의는 아래 폼을 이용하세요.</p>
+          <form id="contactForm" onsubmit="return false;">
+            <label class="small">이름</label>
+            <input id="cname" type="text" placeholder="이름">
+
+            <label class="small" style="margin-top:8px">이메일</label>
+            <input id="cemail" type="email" placeholder="you@example.com">
+
+            <label class="small" style="margin-top:8px">문의 내용</label>
+            <input id="cmsg" type="text" placeholder="메시지">
+
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn" id="contactBtn">보내기</button>
+              <button style="padding:10px 12px;border-radius:10px;border:1px solid #e6eef0;background:#fff" onclick="document.getElementById('contactForm').reset()">초기화</button>
+            </div>
+            <div id="contactOk" style="margin-top:10px;color:green;display:none">메시지가 전송되었습니다. 감사합니다!</div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="copyright">
+      <div>© Re:Earth Project — Green Starts with Us</div>
+      <div style="color:var(--muted)">문의: info@reearth.example</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Smooth reveal on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = {threshold: 0.12, rootMargin: "0px 0px -40px 0px"};
+  const appearOnScroll = new IntersectionObserver(function(entries, observer){
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+  faders.forEach(f => appearOnScroll.observe(f));
+
+  // Simple counters (demo)
+  function animateCount(id, start, end, duration){
+    const el = document.getElementById(id);
+    let startTime = null;
+    function step(timestamp){
+      if(!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime)/duration,1);
+      const val = Math.floor(progress*(end-start)+start);
+      el.textContent = val.toLocaleString();
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  animateCount('countParticipants', 1100, 1246, 900);
+  animateCount('countTrees', 2000, 3824, 900);
+  animateCount('countSchools', 10, 42, 900);
+
+  // Participation form
+  document.getElementById('joinBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const school = document.getElementById('school').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if(!name || !email){
+      alert('이름과 이메일은 필수입니다.');
+      return;
+    }
+    // fake register
+    alert(`${name}님, 참여 등록이 완료되었습니다! Re:Action 챌린지에 오신 것을 환영합니다.`);
+    // add feed
+    const feed = document.getElementById('feed');
+    const node = document.createElement('div');
+    node.style.background = '#fbfffc';
+    node.style.padding = '10px';
+    node.style.borderRadius = '10px';
+    node.textContent = `${name} — "${document.getElementById('act').value}" 활동 등록`;
+    feed.prepend(node);
+    document.getElementById('joinForm').reset();
+    // increment participant count visually
+    const pEl = document.getElementById('countParticipants');
+    pEl.textContent = (parseInt(pEl.textContent.replace(/,/g,'')) + 1).toLocaleString();
+  });
+
+  // Calculator
+  document.getElementById('calcBtn').addEventListener('click', function(){
+    const val = parseInt(document.getElementById('calcAct').value,10);
+    const cnt = Math.max(1, parseInt(document.getElementById('calcCount').value,10) || 1);
+    const total = val * cnt;
+    document.getElementById('calcResult').textContent = `예상 포인트: ${total} pts`;
+  });
+
+  // Contact form
+  document.getElementById('contactBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cname').value.trim();
+    const email = document.getElementById('cemail').value.trim();
+    const msg = document.getElementById('cmsg').value.trim();
+    if(!email || !msg){
+      alert('이메일과 문의 내용을 입력해주세요.');
+      return;
+    }
+    // fake send
+    document.getElementById('contactOk').style.display = 'block';
+    document.getElementById('contactForm').reset();
+    setTimeout(()=> document.getElementById('contactOk').style.display = 'none',3000);
+  });
+
+  // Donate opener (demo)
+  function openDonate(){
+    alert('감사합니다! 페이지 데모에서는 실제 결제 연동을 제공하지 않습니다. 후원 관련 문의는 info@reearth.example 로 보내주세요.');
+  }
+
+  // Smooth anchor scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click', function(e){
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        window.scrollTo({top: target.offsetTop - 70, behavior:'smooth'});
+      }
+    });
+  });
+
+  // small accessibility improvement: focus outlines on keyboard users
+  document.body.addEventListener('keyup', function(e){
+    if(e.key === 'Tab') document.body.classList.add('kbd');
+  });
+</script>
+</body>
+</html>
